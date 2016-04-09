@@ -1,0 +1,14 @@
+body {
+	background-color: #fff;
+	overflow: hidden;
+}
+.nav {
+	float: right;
+}
+.nav-list {
+	position: relative;
+	right: -285px;
+}
+.menu-close {
+	display: none;
+}
