@@ -1,0 +1,224 @@
+<DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HACK</title>
+    <meta name="description" content="Wiredwiki App">
+    
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+</head>
+    
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                
+                <a href="" class="navbar-brand">HACK</a>
+                </div>
+            
+       
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#what">What is HACK?</a>
+                    <li><a href="#how">How to HACK</a>
+                    <li><a href="#features">Features</a>
+                    <li><a href="#benefits">Benefits</a>
+                       
+                </ul>    
+            </div>
+            </div>
+        </nav>
+      
+   <div class="header">
+	    	<!-- SCripts for background animation -->
+	        <script src="js/three.min.js"></script>
+			<script src="js/renderers/Projector.js"></script>
+			<script src="js/renderers/CanvasRenderer.js"></script>
+
+			<script>
+				var mouseX = 0, mouseY = 0,
+				windowHalfX = window.innerWidth / 2,
+				windowHalfY = window.innerHeight / 2,
+				SEPARATION = 200,
+				AMOUNTX = 10,
+				AMOUNTY = 10,
+				camera, scene, renderer;
+				init();
+				animate();
+				function init() {
+					var container, separation = 100, amountX = 50, amountY = 50,
+					particles, particle;
+					container = document.createElement('div');
+					document.body.appendChild(container);
+					camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+					camera.position.z = 100;
+					scene = new THREE.Scene();
+					renderer = new THREE.CanvasRenderer();
+					renderer.setPixelRatio( window.devicePixelRatio );
+					renderer.setSize( window.innerWidth, window.innerHeight );
+					container.appendChild( renderer.domElement );
+					// particles
+					var PI2 = Math.PI * 2;
+					var material = new THREE.SpriteCanvasMaterial( {
+						color: 0xffffff,
+						program: function ( context ) {
+							context.beginPath();
+							context.arc( 0, 0, 0.5, 0, PI2, true );
+							context.fill();
+						}
+					} );
+					var geometry = new THREE.Geometry();
+					for ( var i = 0; i < 100; i ++ ) {
+						particle = new THREE.Sprite( material );
+						particle.position.x = Math.random() * 2 - 1;
+						particle.position.y = Math.random() * 2 - 1;
+						particle.position.z = Math.random() * 2 - 1;
+						particle.position.normalize();
+						particle.position.multiplyScalar( Math.random() * 10 + 450 );
+						particle.scale.x = particle.scale.y = 10;
+						scene.add( particle );
+						geometry.vertices.push( particle.position );
+					}
+					// lines
+					var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x317dd3, opacity: 0.5 } ) );
+					scene.add( line );
+					document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+					document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+					document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+					//
+					window.addEventListener( 'resize', onWindowResize, false );
+				}
+				function onWindowResize() {
+					windowHalfX = window.innerWidth / 2;
+					windowHalfY = window.innerHeight / 2;
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix();
+					renderer.setSize( window.innerWidth, window.innerHeight );
+				}
+				//
+				function onDocumentMouseMove(event) {
+					mouseX = event.clientX - windowHalfX;
+					mouseY = event.clientY - windowHalfY;
+				}
+				function onDocumentTouchStart( event ) {
+					if ( event.touches.length > 1 ) {
+						event.preventDefault();
+						mouseX = event.touches[ 0 ].pageX - windowHalfX;
+						mouseY = event.touches[ 0 ].pageY - windowHalfY;
+					}
+				}
+				function onDocumentTouchMove( event ) {
+					if ( event.touches.length == 1 ) {
+						event.preventDefault();
+						mouseX = event.touches[ 0 ].pageX - windowHalfX;
+						mouseY = event.touches[ 0 ].pageY - windowHalfY;
+					}
+				}
+				//
+				function animate() {
+					requestAnimationFrame( animate );
+					render();
+				}
+				function render() {
+					camera.position.x += ( mouseX - camera.position.x ) * .05;
+					camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+					camera.lookAt( scene.position );
+					renderer.render( scene, camera );
+				}
+			</script>
+			<!-- End scripts for backgroound -->
+
+			<h1 class="head-text">/hAck</h1>
+
+			<div class="nav">
+				<span class="menu"><i class="fa fa-bars"></i></span>
+				
+					<ul class="nav-list">
+						<li><a href="#">My question is <br> <small>Student</small></a></li>
+						<li><a href="#">The answer is <br> <small>Professor</small></a></li>
+					</ul>
+			</div>
+		</div>
+        
+        
+    <section>
+    <div class="page-header text-center" id="what">
+        <div class="row">
+	        	<h3>What is HACK?</h3>
+            <p>HACK is awesome dsaflasjfpoasjfkalsdn;fasldkfalskdfjalskjfdkl;sjafkdlasjklfdjsafdlsafdsjadha;fdnsa;f;ndsalkfhasdfkjsadlkjfljsad;fajdslkafkdjskahfjdahfjdslajlfkdjlafds</p>
+	        </div>
+        </div>
+    </section>
+        
+    <section>
+    
+        <div class="page-header text-center" id="how">
+            <div class="row">
+                <h3>How to HACK</h3>
+                <button data-toggle="collapse" data-target="#students">Students</button>
+                    <div id="students" class="collapse">
+                    1. Sign up<br>
+                    2. Search for a prof<br>
+                    3. Get connected!<br>
+                    4. Rate <br>
+                    </div>
+                <button data-toggle="collapse" data-target="#professors">Professors</button>
+                    <div id="professors" class="collapse">
+                        You must be logged in to learn more!
+                        <button data-toggle="collapse" data-target="#professors">Sign Up</button>
+                    <div id="signup" class="collapse">
+                        </div>
+                        <button data-toggle="collapse" data-target="#professors">Log In</button>
+                    <div id="login" class="collapse">
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+        
+    <section>
+        <div class="page-header text-center" id="features">
+            <h3>Features</h3>
+            Bulleted list of cool features
+        </div>
+        </section>
+        
+    <section>
+        <div class="page-header text-center" id="benefits">
+                <div class="row">
+                <h3>Benefits</h3>
+                <button data-toggle="collapse" data-target="#studentb">Students</button>
+                    <div id="studentb" class="collapse">
+                    List of student benefits
+                    </div>
+                <button data-toggle="collapse" data-target="#professorb">Professors</button>
+                    <div id="professorb" class="collapse">
+                    List of professor benefits/point system/etc etc
+                    </div>
+            </div>
+            
+        </div>
+        </section>
+    
+    
+<body>
+    
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>    
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
