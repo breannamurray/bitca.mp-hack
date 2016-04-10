@@ -16,21 +16,16 @@ var main = function () {
    setTimeout(function() {
     clearInterval(inter)
    }, 10000);
-/*
+
   $(document).scroll(function () {
   var st = $(this).scrollTop();
-     if (st > 100){
-            $('.navbar-nav li a').addClass("animated");
-            $('.navbar-nav li a').addClass("fadeOutRight");
-            $('.navbar').fadeOut(300);
+     if (st > 155){
+            $('.card').addClass("animated");
+            $('.card').addClass("fadeInUp");
         }
-    else {
-          $('.navbar').fadeIn(200);
-          $('.navbar-nav li a').removeClass("fadeOutRight");
-          $('.navbar-nav li a').addClass("fadeInRight");
-    }
-  })
-   */
+   
+  });
+   
    var lastScrollTop = 0;
 
 window.addEventListener("scroll", function(){ 
